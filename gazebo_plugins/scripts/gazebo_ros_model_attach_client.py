@@ -3,13 +3,12 @@
 import logging
 import rclpy
 
-from gazebo_model_attachment_plugin.srv import Attach
-from gazebo_model_attachment_plugin.srv import Detach
+from gazebo_msgs.srv import Attach, Detach
 
 logger = logging.getLogger(__name__)
 
 
-class GazeboModelAttachmentClient(object):
+class GazeboRosModelAttachmentClient(object):
     def __init__(self):
         self.__node = rclpy.create_node("gazebo_model_attachment_client")
         self.__logger = self.__node.get_logger()

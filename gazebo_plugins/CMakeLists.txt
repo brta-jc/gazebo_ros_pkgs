@@ -467,6 +467,8 @@ ament_target_dependencies(gazebo_ros_model_attachment
 )
 ament_export_dependencies(gazebo_dev rclcpp gazebo_msgs gazebo_ros std_msgs)
 ament_export_libraries(gazebo_ros_model_attachment)
+install(DIRECTORY test DESTINATION share/${PROJECT_NAME})
+
 
 # gazebo_ros_wheel_slip
 if(NOT GAZEBO_VERSION VERSION_LESS 11.9)
