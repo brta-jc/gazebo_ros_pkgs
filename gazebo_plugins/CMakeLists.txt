@@ -107,6 +107,7 @@ if(ENABLE_PROFILER)
   target_include_directories(gazebo_ros_force PUBLIC ${ignition-common3_INCLUDE_DIRS})
   target_link_libraries(gazebo_ros_force ${ignition-common3_LIBRARIES})
 endif()
+
 # gazebo_ros_template
 add_library(gazebo_ros_template SHARED
   src/gazebo_ros_template.cpp
@@ -451,6 +452,21 @@ if(ENABLE_PROFILER)
   target_include_directories(gazebo_ros_projector PUBLIC ${ignition-common3_INCLUDE_DIRS})
   target_link_libraries(gazebo_ros_projector ${ignition-common3_LIBRARIES})
 endif()
+
+# gazebo_ros_model_attachment.cpp
+add_library(gazebo_ros_model_attachment SHARED
+  src/gazebo_ros_model_attachment.cpp
+)
+target_include_directories(gazebo_ros_model_attachment PUBLIC include)
+ament_target_dependencies(gazebo_ros_model_attachment
+  "gazebo_ros"
+  "gazebo_dev"
+  "gazebo_msgs"
+  "rclcpp"
+  "std_msgs"
+)
+ament_export_dependencies(gazebo_dev rclcpp gazebo_msgs gazebo_ros std_msgs)
+ament_export_libraries(gazebo_ros_model_attachment)
 
 # gazebo_ros_wheel_slip
 if(NOT GAZEBO_VERSION VERSION_LESS 11.9)
